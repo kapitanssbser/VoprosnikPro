@@ -2,10 +2,10 @@ package ru.saikov.voprosnik;
 
 public class MyMain {
     public static void main(String[] args) {
-        System.out.println("Основной класс");
+        System.out.println("РћСЃРЅРѕРІРЅРѕР№ РєР»Р°СЃСЃ");
         Vopros vopros = new Vopros();
         vopros.test();
-        System.out.println("Что то добавили...");
-        System.out.println("Теперь и с ноутбука!");
+        System.out.println("Р§С‚Рѕ С‚Рѕ РґРѕР±Р°РІРёР»Рё...");
+        System.out.println("РўРµРїРµСЂСЊ Рё СЃ РЅРѕСѓС‚Р±СѓРєР°!");
     }
 }
