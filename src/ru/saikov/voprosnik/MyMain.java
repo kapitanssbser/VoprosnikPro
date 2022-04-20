@@ -6,5 +6,6 @@ public class MyMain {
         Vopros vopros = new Vopros();
         vopros.test();
         System.out.println("Что то добавили...");
+        System.out.println("Теперь и с ноутбука!");
     }
 }
