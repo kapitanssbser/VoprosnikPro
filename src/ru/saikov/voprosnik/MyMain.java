@@ -5,5 +5,6 @@ public class MyMain {
         System.out.println("Основной класс");
         Vopros vopros = new Vopros();
         vopros.test();
+        System.out.println("Что то добавили...");
     }
 }
