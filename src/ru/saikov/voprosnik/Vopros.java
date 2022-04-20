@@ -6,6 +6,15 @@ public class Vopros { //Класс вопрос
     String variant1, variant2, variant3;//Варианты ответа
     enum Gruppy {ELECTRIK, SPEC_SYST};//Группы
     Gruppy gruppy;
+    //Конструктор
+    public Vopros(String vopros,String otvet, String variant1, String variant2, String variant3, Gruppy gruppy){
+        this.vopros = vopros;
+        this.otvet = otvet;
+        this.variant1 = variant1;
+        this.variant2 = variant2;
+        this.variant3 = variant3;
+        this.gruppy = gruppy;
+    }
     //Сеттеры и геттеры
     public void setVopros(String vopros) {
         this.vopros = vopros;
