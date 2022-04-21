@@ -51,17 +51,16 @@ public class MyMain {
         while (cykl){
             String myChosse = myMenu.getItemMenu();
             if (myChosse == ITEMS2_1){
-                System.out.println("Выбран добавить пользователя в БД");
+                addUserToBd();  //Метод обработки
                 myMenu.printMenu();
             }
             if (myChosse == ITEMS2_2) {
-                System.out.println("Выбрано добавить группу вопросов");
+                addGroupQues();   //Метод обработки
                 myMenu.printMenu();
-                //break;
             }
-            if (myChosse == ITEMS2_3) {
+            if (myChosse == ITEMS2_3) { //Обрабатываем пункт меню НАЗАД
                 System.out.println("Выбрано назад");
-                break;
+                break;  //Выходим из цикла
             }
             if((myChosse == "NC") || (myChosse == null)){
                 System.out.println("Введите корректный пункт меню");
@@ -78,13 +77,12 @@ public class MyMain {
         while (cykl){
             String myChosse = myMenu.getItemMenu();
             if (myChosse == ITEMS3_1){
-                System.out.println("Выбран сдать экзамен");
+                getStady();   //Метод обработки
                 myMenu.printMenu();
             }
             if (myChosse == ITEMS3_2) {
-                System.out.println("Выбрано распечатать протокол");
+                printProtokol();   //Метод обработки
                 myMenu.printMenu();
-                //break;
             }
             if (myChosse == ITEMS3_3) {
                 System.out.println("Выбрано назад");
@@ -98,5 +96,16 @@ public class MyMain {
         }
 
     }
-
+    public void addUserToBd(){ // Метод для меню ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ В БД
+        System.out.println("Выбран добавить пользователя в БД");
+    }
+    public void addGroupQues(){   //Метод для меню ДОБАВИТЬ ГРУППУ ВОПРОСОВ
+        System.out.println("Выбрано добавить группу вопросов");
+    }
+    public void getStady(){   //Метод для меню СДАТЬ ЭКЗАМЕН
+        System.out.println("Выбран сдать экзамен");
+    }
+    public void printProtokol(){    //Метод для меню РАСПЕЧАТАТЬ ПРОТОКОЛ
+        System.out.println("Выбрано распечатать протокол");
+    }
 }
