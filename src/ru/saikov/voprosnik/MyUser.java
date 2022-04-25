@@ -1,15 +1,16 @@
 package ru.saikov.voprosnik;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MyUser {
+public class MyUser implements Serializable {
     String familia; //Фамилия
     String name;    //Имя
     String otchestvo;    //Отчество
     String dolznost;     //Должность
     String podrazdelenie;     //Подразделение
     String uchastok;     //Участок
-    Date dataBorn;     //Дата рождения
+    String dataBorn;     //Дата рождения
     String numberOfTable;    //Табельный номер
     String notes;    //Примечания
     //Сетеры и гетеры
@@ -62,11 +63,11 @@ public class MyUser {
         return uchastok;
     }
 
-    public void setDataBorn(Date dataBorn) {
+    public void setDataBorn(String dataBorn) {
         this.dataBorn = dataBorn;
     }
 
-    public Date getDataBorn() {
+    public String getDataBorn() {
         return dataBorn;
     }
 

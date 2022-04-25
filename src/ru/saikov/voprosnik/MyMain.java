@@ -1,5 +1,13 @@
 package ru.saikov.voprosnik;
 
+import javax.imageio.IIOException;
+import javax.swing.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Scanner;
+
 public class MyMain {
     public final String ITEMS1_1 = "1. Администратор";    //Основное меню
     public final String ITEMS1_2 = "2. Пользователь";
@@ -97,13 +105,45 @@ public class MyMain {
 
     }
     public void addUserToBd(){ // Метод для меню ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ В БД
-        System.out.println("Выбран добавить пользователя в БД");
+        MyUser myUser = new MyUser();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("***** Добавление нового пользователя *****");
+        System.out.print("Фамилия : ");
+        myUser.setFamilia(scanner.nextLine());
+        System.out.print("Имя : ");
+        myUser.setName(scanner.nextLine());
+        System.out.print("Отчество : ");
+        myUser.setOtchestvo(scanner.nextLine());
+        System.out.print("Должность : ");
+        myUser.setDolznost(scanner.nextLine());
+        System.out.print("Подразделение : ");
+        myUser.setPodrazdelenie(scanner.nextLine());
+        System.out.print("Участок : ");
+        myUser.setUchastok(scanner.nextLine());
+        System.out.print("Табельный номер : ");
+        myUser.setNumberOfTable(scanner.nextLine());
+        System.out.print("Дата рождения (необходима подсказка относительно формата ввода даты!) : ");
+        myUser.setDataBorn(scanner.nextLine());
+        //Сохраняем объект, имя файла составляем по принципу Иванов_Иван_Иванович.USER в папку SSP/USERS
+        //Предварительно на текущем ПК должна быть создана папка SSP/USERS в пользовательской папке!
+        String pathToFiles = System.getProperty("user.home") + File.separatorChar + "SSP" + File.separatorChar + "USERS";  //Получаем путь к папке для сохранения
+        try {
+            FileOutputStream outputStream = new FileOutputStream(pathToFiles + File.separatorChar +
+                    myUser.getFamilia() + "_" + myUser.getName() + "_" + myUser.getOtchestvo() + ".USERS");    //Собираем имя файла, открываем поток
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(myUser); //Сохраняем объект в файл
+            objectOutputStream.close(); //Закрываем поток
+            System.out.println("!!! Файл создан !!!");
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
     }
     public void addGroupQues(){   //Метод для меню ДОБАВИТЬ ГРУППУ ВОПРОСОВ
         System.out.println("Выбрано добавить группу вопросов");
     }
     public void getStady(){   //Метод для меню СДАТЬ ЭКЗАМЕН
         System.out.println("Выбран сдать экзамен");
+        //Загрузить нужного пользователя
     }
     public void printProtokol(){    //Метод для меню РАСПЕЧАТАТЬ ПРОТОКОЛ
         System.out.println("Выбрано распечатать протокол");
