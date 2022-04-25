@@ -2,10 +2,7 @@ package ru.saikov.voprosnik;
 
 import javax.imageio.IIOException;
 import javax.swing.*;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.Scanner;
 
 public class MyMain {
@@ -134,8 +131,11 @@ public class MyMain {
             objectOutputStream.writeObject(myUser); //Сохраняем объект в файл
             objectOutputStream.close(); //Закрываем поток
             System.out.println("!!! Файл создан !!!");
-        }catch (IOException exception){
-            exception.printStackTrace();
+        }catch (FileNotFoundException exception){
+            //exception.printStackTrace();
+            System.out.println("ОШИБКА! Создайте папку SSP и USERS!");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     public void addGroupQues(){   //Метод для меню ДОБАВИТЬ ГРУППУ ВОПРОСОВ
