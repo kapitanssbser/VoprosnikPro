@@ -141,9 +141,43 @@ public class MyMain {
     public void addGroupQues(){   //Метод для меню ДОБАВИТЬ ГРУППУ ВОПРОСОВ
         System.out.println("Выбрано добавить группу вопросов");
     }
+
     public void getStady(){   //Метод для меню СДАТЬ ЭКЗАМЕН
-        System.out.println("Выбран сдать экзамен");
         //Загрузить нужного пользователя
+        MyUser myUserToStady = new MyUser();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("***** Сдать экзамен *****");
+        System.out.print("Фамилия : ");  //Запрашиваем данные
+        myUserToStady.setFamilia(scanner.nextLine());
+        System.out.print("Имя : ");
+        myUserToStady.setName(scanner.nextLine());
+        System.out.print("Отчество : ");
+        myUserToStady.setOtchestvo(scanner.nextLine());
+        String pathToFiles = System.getProperty("user.home") +
+                File.separatorChar + "SSP" + File.separatorChar + "USERS";  //Формируем путь к файлу
+        String myFile = pathToFiles + File.separatorChar + myUserToStady.getFamilia() + "_"
+                + myUserToStady.getName() + "_" + myUserToStady.getOtchestvo() + ".USERS";  //Формируем имя файла
+        //File f = new File(myFile);
+            try {
+                FileInputStream fileStream = new FileInputStream(myFile);  //Открываем потоки
+                ObjectInputStream os = new ObjectInputStream(fileStream);
+                Object myUser = os.readObject(); //Читаем объект
+                MyUser myUserLoad = (MyUser) myUser;  //Приводим к нужному нам типу
+                os.close();  //Освобождаем ресурсы
+                //Проверяем
+                System.out.println("Загружено: Фамилия - " + myUserLoad.getFamilia() + ". Имя - " +
+                        myUserLoad.getName() + ". Отчество : " + myUserLoad.getOtchestvo() + ".");  //Выводим данные с уже загруженного объекта
+                System.out.println("Начинаем сдачу экзамена!");
+                //Далее должна быть реализация сдачи экзамена
+
+            } catch (FileNotFoundException e) {  //Обрабатываем ошибочные ситуации
+                System.out.println("ОШИБКА! Файл пользователя не найден! Добавьте нового пользователя!!!!");
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
     }
     public void printProtokol(){    //Метод для меню РАСПЕЧАТАТЬ ПРОТОКОЛ
         System.out.println("Выбрано распечатать протокол");
