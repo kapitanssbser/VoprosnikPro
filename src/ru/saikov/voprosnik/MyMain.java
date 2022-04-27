@@ -11,7 +11,7 @@ public class MyMain {
     public final String ITEMS1_3 = "3. Выход из программы";
 
     public final String ITEMS2_1 = "1. Добавить пользователя в базу";   //Меню АДМИНИСТРАТОР
-    public final String ITEMS2_2 = "2. Добавить группу вопросов";
+    public final String ITEMS2_2 = "2. Добавить файл вопросов";
     public final String ITEMS2_3 = "3. Назад";
 
     public final String ITEMS3_1 = "1. Сдать экзамен";      //Меню ПОЛЬЗОВАТЕЛЬ
@@ -139,8 +139,54 @@ public class MyMain {
         }
     }
     public void addGroupQues(){   //Метод для меню ДОБАВИТЬ ГРУППУ ВОПРОСОВ
-        System.out.println("Выбрано добавить группу вопросов");
+        //System.out.println("Выбрано добавить группу вопросов");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("***** Добавить файл вопросов *****");
+        Vopros vopros = new Vopros();
+        System.out.print("Вопрос : ");  //Запрашиваем данные
+        vopros.setVopros(scanner.nextLine());
+        System.out.print("Вариант №1 : ");  //Запрашиваем данные
+        vopros.setVariant1(scanner.nextLine());
+        System.out.print("Вариант №2 : ");  //Запрашиваем данные
+        vopros.setVariant2(scanner.nextLine());
+        System.out.print("Вариант №3 : ");  //Запрашиваем данные
+        vopros.setVariant3(scanner.nextLine());
+        System.out.print("Ответ : ");  //Запрашиваем данные
+        vopros.setOtvet(scanner.nextLine());
+        System.out.print("Название группы : ");  //Запрашиваем данные
+        vopros.setFileName(scanner.nextLine());
+
+
+        String pathToFiles = System.getProperty("user.home") + File.separatorChar + "SSP" + File.separatorChar + "QUESTION" + File.separatorChar +
+                vopros.getFileName() + ".QUE";  //Получаем путь к папке для сохранения
+
+        try {
+            FileOutputStream outputStream = new FileOutputStream(pathToFiles);    //Собираем имя файла, открываем поток
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            for (int i = 0; i < 3; i++) {
+                objectOutputStream.writeObject(vopros); //Сохраняем объект в файл
+                System.out.print("Вопрос : ");  //Запрашиваем данные
+                vopros.setVopros(scanner.nextLine());
+                System.out.print("Вариант №1 : ");  //Запрашиваем данные
+                vopros.setVariant1(scanner.nextLine());
+                System.out.print("Вариант №2 : ");  //Запрашиваем данные
+                vopros.setVariant2(scanner.nextLine());
+                System.out.print("Вариант №3 : ");  //Запрашиваем данные
+                vopros.setVariant3(scanner.nextLine());
+                System.out.print("Ответ : ");  //Запрашиваем данные
+                vopros.setOtvet(scanner.nextLine());
+
+            }
+            objectOutputStream.close();
+            System.out.println("Файл вопросов создан!");
+
+            } catch (FileNotFoundException exception) {
+                System.out.println("ОШИБКА! Папка QUESTION не найдена!");
+            } catch (IOException e) {
+                e.printStackTrace();
+        }
     }
+
 
     public void getStady(){   //Метод для меню СДАТЬ ЭКЗАМЕН
         //Загрузить нужного пользователя

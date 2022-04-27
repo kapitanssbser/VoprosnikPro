@@ -1,11 +1,14 @@
 package ru.saikov.voprosnik;
 
-public class Vopros { //Класс вопрос
+import java.io.Serializable;
+
+public class Vopros implements Serializable { //Класс вопрос
     String vopros;//Сам вопрос
     String otvet;//Ответ на вопрос
     String variant1, variant2, variant3;//Варианты ответа
     enum Gruppy {ELECTRIK, SPEC_SYST};//Группы
     Gruppy gruppy;
+    String fileName;
     //Конструктор
     public Vopros(String vopros,String otvet, String variant1, String variant2, String variant3, Gruppy gruppy){
         this.vopros = vopros;
@@ -15,7 +18,20 @@ public class Vopros { //Класс вопрос
         this.variant3 = variant3;
         this.gruppy = gruppy;
     }
+    public Vopros(){
+        super();
+    }
     //Сеттеры и геттеры
+
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
     public void setVopros(String vopros) {
         this.vopros = vopros;
     }
