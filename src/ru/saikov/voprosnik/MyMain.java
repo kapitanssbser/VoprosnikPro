@@ -103,24 +103,29 @@ public class MyMain {
     }
     public void addUserToBd(){ // Метод для меню ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ В БД
         MyUser myUser = new MyUser();
-        Scanner scanner = new Scanner(System.in);
+        //Scanner scanner = new Scanner(System.in);
         System.out.println("***** Добавление нового пользователя *****");
-        System.out.print("Фамилия : ");
-        myUser.setFamilia(scanner.nextLine());
-        System.out.print("Имя : ");
-        myUser.setName(scanner.nextLine());
-        System.out.print("Отчество : ");
-        myUser.setOtchestvo(scanner.nextLine());
-        System.out.print("Должность : ");
-        myUser.setDolznost(scanner.nextLine());
-        System.out.print("Подразделение : ");
-        myUser.setPodrazdelenie(scanner.nextLine());
-        System.out.print("Участок : ");
-        myUser.setUchastok(scanner.nextLine());
-        System.out.print("Табельный номер : ");
-        myUser.setNumberOfTable(scanner.nextLine());
-        System.out.print("Дата рождения (необходима подсказка относительно формата ввода даты!) : ");
-        myUser.setDataBorn(scanner.nextLine());
+
+        //System.out.print("Фамилия : ");
+        //myUser.setFamilia(scanner.nextLine());
+        //System.out.print("Имя : ");
+        //myUser.setName(scanner.nextLine());
+        //System.out.print("Отчество : ");
+        //myUser.setOtchestvo(scanner.nextLine());
+
+        printHelperFIO(myUser);
+
+        //System.out.print("Должность : ");
+        //myUser.setDolznost(scanner.nextLine());
+        //System.out.print("Подразделение : ");
+        //myUser.setPodrazdelenie(scanner.nextLine());
+        //System.out.print("Участок : ");
+        //myUser.setUchastok(scanner.nextLine());
+        //System.out.print("Табельный номер : ");
+        //myUser.setNumberOfTable(scanner.nextLine());
+        //System.out.print("Дата рождения (необходима подсказка относительно формата ввода даты!) : ");
+        //myUser.setDataBorn(scanner.nextLine());
+        printHelperRabData(myUser);
         //Сохраняем объект, имя файла составляем по принципу Иванов_Иван_Иванович.USER в папку SSP/USERS
         //Предварительно на текущем ПК должна быть создана папка SSP/USERS в пользовательской папке!
         String pathToFiles = System.getProperty("user.home") + File.separatorChar + "SSP" + File.separatorChar + "USERS";  //Получаем путь к папке для сохранения
@@ -143,16 +148,19 @@ public class MyMain {
         Scanner scanner = new Scanner(System.in);
         System.out.println("***** Добавить файл вопросов *****");
         Vopros vopros = new Vopros();
-        System.out.print("Вопрос : ");  //Запрашиваем данные
-        vopros.setVopros(scanner.nextLine());
-        System.out.print("Вариант №1 : ");  //Запрашиваем данные
-        vopros.setVariant1(scanner.nextLine());
-        System.out.print("Вариант №2 : ");  //Запрашиваем данные
-        vopros.setVariant2(scanner.nextLine());
-        System.out.print("Вариант №3 : ");  //Запрашиваем данные
-        vopros.setVariant3(scanner.nextLine());
-        System.out.print("Ответ : ");  //Запрашиваем данные
-        vopros.setOtvet(scanner.nextLine());
+
+        //System.out.print("Вопрос : ");  //Запрашиваем данные
+        //vopros.setVopros(scanner.nextLine());
+        //System.out.print("Вариант №1 : ");  //Запрашиваем данные
+        //vopros.setVariant1(scanner.nextLine());
+        //System.out.print("Вариант №2 : ");  //Запрашиваем данные
+        //vopros.setVariant2(scanner.nextLine());
+        //System.out.print("Вариант №3 : ");  //Запрашиваем данные
+        //vopros.setVariant3(scanner.nextLine());
+        //System.out.print("Ответ : ");  //Запрашиваем данные
+        //vopros.setOtvet(scanner.nextLine());
+        printhelperInputQuestion(vopros);
+
         System.out.print("Название группы : ");  //Запрашиваем данные
         vopros.setFileName(scanner.nextLine());
 
@@ -165,17 +173,19 @@ public class MyMain {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             for (int i = 0; i < 3; i++) {
                 objectOutputStream.writeObject(vopros); //Сохраняем объект в файл
-                System.out.print("Вопрос : ");  //Запрашиваем данные
-                vopros.setVopros(scanner.nextLine());
-                System.out.print("Вариант №1 : ");  //Запрашиваем данные
-                vopros.setVariant1(scanner.nextLine());
-                System.out.print("Вариант №2 : ");  //Запрашиваем данные
-                vopros.setVariant2(scanner.nextLine());
-                System.out.print("Вариант №3 : ");  //Запрашиваем данные
-                vopros.setVariant3(scanner.nextLine());
-                System.out.print("Ответ : ");  //Запрашиваем данные
-                vopros.setOtvet(scanner.nextLine());
 
+                //System.out.print("Вопрос : ");  //Запрашиваем данные
+                //vopros.setVopros(scanner.nextLine());
+                //System.out.print("Вариант №1 : ");  //Запрашиваем данные
+                //vopros.setVariant1(scanner.nextLine());
+                //System.out.print("Вариант №2 : ");  //Запрашиваем данные
+                //vopros.setVariant2(scanner.nextLine());
+                //System.out.print("Вариант №3 : ");  //Запрашиваем данные
+                //vopros.setVariant3(scanner.nextLine());
+                //System.out.print("Ответ : ");  //Запрашиваем данные
+                //vopros.setOtvet(scanner.nextLine());
+
+                printhelperInputQuestion(vopros);
             }
             objectOutputStream.close();
             System.out.println("Файл вопросов создан!");
@@ -194,12 +204,15 @@ public class MyMain {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("***** Сдать экзамен *****");
-        System.out.print("Фамилия : ");  //Запрашиваем данные
-        myUserToStady.setFamilia(scanner.nextLine());
-        System.out.print("Имя : ");
-        myUserToStady.setName(scanner.nextLine());
-        System.out.print("Отчество : ");
-        myUserToStady.setOtchestvo(scanner.nextLine());
+        //System.out.print("Фамилия : ");  //Запрашиваем данные
+        //myUserToStady.setFamilia(scanner.nextLine());
+        //System.out.print("Имя : ");
+        //myUserToStady.setName(scanner.nextLine());
+        //System.out.print("Отчество : ");
+        //myUserToStady.setOtchestvo(scanner.nextLine());
+
+        printHelperFIO(myUserToStady);
+
         String pathToFiles = System.getProperty("user.home") +
                 File.separatorChar + "SSP" + File.separatorChar + "USERS";  //Формируем путь к файлу
         String myFile = pathToFiles + File.separatorChar + myUserToStady.getFamilia() + "_"
@@ -215,7 +228,7 @@ public class MyMain {
                 System.out.println("Загружено: Фамилия - " + myUserLoad.getFamilia() + ". Имя - " +
                         myUserLoad.getName() + ". Отчество : " + myUserLoad.getOtchestvo() + ".");  //Выводим данные с уже загруженного объекта
                 System.out.println("Начинаем сдачу экзамена!");
-                //Далее должна быть реализация сдачи экзамена
+                //Далее должна быть реализация сдачи экзамена**********************************************
 
             } catch (FileNotFoundException e) {  //Обрабатываем ошибочные ситуации
                 System.out.println("ОШИБКА! Файл пользователя не найден! Добавьте нового пользователя!!!!");
@@ -227,5 +240,43 @@ public class MyMain {
     }
     public void printProtokol(){    //Метод для меню РАСПЕЧАТАТЬ ПРОТОКОЛ
         System.out.println("Выбрано распечатать протокол");
+    }
+
+    public void printHelperFIO(MyUser mu){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Фамилия : ");  //Запрашиваем данные
+        mu.setFamilia(scanner.nextLine());
+        System.out.print("Имя : ");
+        mu.setName(scanner.nextLine());
+        System.out.print("Отчество : ");
+        mu.setOtchestvo(scanner.nextLine());
+
+    }
+    public void printHelperRabData(MyUser mu){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Должность : ");
+        mu.setDolznost(scanner.nextLine());
+        System.out.print("Подразделение : ");
+        mu.setPodrazdelenie(scanner.nextLine());
+        System.out.print("Участок : ");
+        mu.setUchastok(scanner.nextLine());
+        System.out.print("Табельный номер : ");
+        mu.setNumberOfTable(scanner.nextLine());
+        System.out.print("Дата рождения (необходима подсказка относительно формата ввода даты!) : ");
+        mu.setDataBorn(scanner.nextLine());
+    }
+    public void printhelperInputQuestion(Vopros vopros){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Вопрос : ");  //Запрашиваем данные
+        vopros.setVopros(scanner.nextLine());
+        System.out.print("Вариант №1 : ");  //Запрашиваем данные
+        vopros.setVariant1(scanner.nextLine());
+        System.out.print("Вариант №2 : ");  //Запрашиваем данные
+        vopros.setVariant2(scanner.nextLine());
+        System.out.print("Вариант №3 : ");  //Запрашиваем данные
+        vopros.setVariant3(scanner.nextLine());
+        System.out.print("Ответ : ");  //Запрашиваем данные
+        vopros.setOtvet(scanner.nextLine());
+
     }
 }

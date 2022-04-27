@@ -8,7 +8,7 @@ public class Vopros implements Serializable { //Класс вопрос
     String variant1, variant2, variant3;//Варианты ответа
     enum Gruppy {ELECTRIK, SPEC_SYST};//Группы
     Gruppy gruppy;
-    String fileName;
+    String fileName; //Имя файла группы вопросов
     //Конструктор
     public Vopros(String vopros,String otvet, String variant1, String variant2, String variant3, Gruppy gruppy){
         this.vopros = vopros;
