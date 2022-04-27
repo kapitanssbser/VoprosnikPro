@@ -103,28 +103,8 @@ public class MyMain {
     }
     public void addUserToBd(){ // Метод для меню ДОБАВИТЬ ПОЛЬЗОВАТЕЛЯ В БД
         MyUser myUser = new MyUser();
-        //Scanner scanner = new Scanner(System.in);
         System.out.println("***** Добавление нового пользователя *****");
-
-        //System.out.print("Фамилия : ");
-        //myUser.setFamilia(scanner.nextLine());
-        //System.out.print("Имя : ");
-        //myUser.setName(scanner.nextLine());
-        //System.out.print("Отчество : ");
-        //myUser.setOtchestvo(scanner.nextLine());
-
         printHelperFIO(myUser);
-
-        //System.out.print("Должность : ");
-        //myUser.setDolznost(scanner.nextLine());
-        //System.out.print("Подразделение : ");
-        //myUser.setPodrazdelenie(scanner.nextLine());
-        //System.out.print("Участок : ");
-        //myUser.setUchastok(scanner.nextLine());
-        //System.out.print("Табельный номер : ");
-        //myUser.setNumberOfTable(scanner.nextLine());
-        //System.out.print("Дата рождения (необходима подсказка относительно формата ввода даты!) : ");
-        //myUser.setDataBorn(scanner.nextLine());
         printHelperRabData(myUser);
         //Сохраняем объект, имя файла составляем по принципу Иванов_Иван_Иванович.USER в папку SSP/USERS
         //Предварительно на текущем ПК должна быть создана папка SSP/USERS в пользовательской папке!
@@ -148,43 +128,17 @@ public class MyMain {
         Scanner scanner = new Scanner(System.in);
         System.out.println("***** Добавить файл вопросов *****");
         Vopros vopros = new Vopros();
-
-        //System.out.print("Вопрос : ");  //Запрашиваем данные
-        //vopros.setVopros(scanner.nextLine());
-        //System.out.print("Вариант №1 : ");  //Запрашиваем данные
-        //vopros.setVariant1(scanner.nextLine());
-        //System.out.print("Вариант №2 : ");  //Запрашиваем данные
-        //vopros.setVariant2(scanner.nextLine());
-        //System.out.print("Вариант №3 : ");  //Запрашиваем данные
-        //vopros.setVariant3(scanner.nextLine());
-        //System.out.print("Ответ : ");  //Запрашиваем данные
-        //vopros.setOtvet(scanner.nextLine());
         printhelperInputQuestion(vopros);
 
         System.out.print("Название группы : ");  //Запрашиваем данные
         vopros.setFileName(scanner.nextLine());
-
-
         String pathToFiles = System.getProperty("user.home") + File.separatorChar + "SSP" + File.separatorChar + "QUESTION" + File.separatorChar +
                 vopros.getFileName() + ".QUE";  //Получаем путь к папке для сохранения
-
         try {
             FileOutputStream outputStream = new FileOutputStream(pathToFiles);    //Собираем имя файла, открываем поток
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
             for (int i = 0; i < 3; i++) {
                 objectOutputStream.writeObject(vopros); //Сохраняем объект в файл
-
-                //System.out.print("Вопрос : ");  //Запрашиваем данные
-                //vopros.setVopros(scanner.nextLine());
-                //System.out.print("Вариант №1 : ");  //Запрашиваем данные
-                //vopros.setVariant1(scanner.nextLine());
-                //System.out.print("Вариант №2 : ");  //Запрашиваем данные
-                //vopros.setVariant2(scanner.nextLine());
-                //System.out.print("Вариант №3 : ");  //Запрашиваем данные
-                //vopros.setVariant3(scanner.nextLine());
-                //System.out.print("Ответ : ");  //Запрашиваем данные
-                //vopros.setOtvet(scanner.nextLine());
-
                 printhelperInputQuestion(vopros);
             }
             objectOutputStream.close();
@@ -204,20 +158,11 @@ public class MyMain {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("***** Сдать экзамен *****");
-        //System.out.print("Фамилия : ");  //Запрашиваем данные
-        //myUserToStady.setFamilia(scanner.nextLine());
-        //System.out.print("Имя : ");
-        //myUserToStady.setName(scanner.nextLine());
-        //System.out.print("Отчество : ");
-        //myUserToStady.setOtchestvo(scanner.nextLine());
-
         printHelperFIO(myUserToStady);
-
         String pathToFiles = System.getProperty("user.home") +
                 File.separatorChar + "SSP" + File.separatorChar + "USERS";  //Формируем путь к файлу
         String myFile = pathToFiles + File.separatorChar + myUserToStady.getFamilia() + "_"
                 + myUserToStady.getName() + "_" + myUserToStady.getOtchestvo() + ".USERS";  //Формируем имя файла
-        //File f = new File(myFile);
             try {
                 FileInputStream fileStream = new FileInputStream(myFile);  //Открываем потоки
                 ObjectInputStream os = new ObjectInputStream(fileStream);
